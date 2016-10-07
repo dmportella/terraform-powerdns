@@ -63,7 +63,7 @@ resource "docker_container" "powerdns" {
         ip = "172.17.0.1"
     }
 }
-
+/*
 # Configure the PowerDNS provider
 provider "powerdns" {
     api_key = "changeme"
@@ -80,4 +80,4 @@ resource "powerdns_record" "foobar" {
     type = "A"
     ttl = 300
     records = ["localhost"]
-}
+}*/
