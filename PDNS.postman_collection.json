@@ -1,0 +1,131 @@
+{
+	"variables": [],
+	"info": {
+		"name": "POWERDNS",
+		"_postman_id": "6290f808-fd33-ea8c-ee9d-874907ef31c5",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Servers",
+			"request": {
+				"url": "http://localhost:8080/api/v1/servers",
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "changeme",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET Zones",
+			"request": {
+				"url": "http://localhost:8080/api/v1/servers/localhost/zones",
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "changeme",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST ZONE",
+			"request": {
+				"url": "http://localhost:8080/api/v1/servers/localhost/zones",
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "changeme",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"crunchyapple.org.\", \"kind\": \"Native\", \"masters\": [], \"nameservers\": [\"ns1.crunchyapple.org.\", \"ns2.crunchyapple.org.\"]}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE SRV",
+			"request": {
+				"url": "http://localhost:8080/api/v1/servers/localhost/zones/crunchyapple.org",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "changeme",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"rrsets\":[\r\n      {\r\n         \"name\":\"test.crunchyapple.org.\",\r\n         \"type\":\"SRV\",\r\n         \"ttl\":300,\r\n         \"changetype\":\"REPLACE\",\r\n         \"records\":[\r\n            {\r\n               \"content\":\"99 80 80 www.google.com.\",\r\n               \"disabled\":false\r\n            },\r\n            {\r\n               \"content\":\"100 80 80 www.yahoo.com.\",\r\n               \"disabled\":false\r\n            },\r\n            {\r\n               \"content\":\"101 80 80 www.bing.com.\",\r\n               \"disabled\":false\r\n            },\r\n            {\r\n               \"content\":\"102 80 80 duckduckgo.com.\",\r\n               \"disabled\":false\r\n            }\r\n         ]\r\n      }\r\n   ]\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE CNAME",
+			"request": {
+				"url": "http://localhost:8080/api/v1/servers/localhost/zones/crunchyapple.org",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "changeme",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"rrsets\": [ {\"name\": \"munchy.crunchyapple.org.\", \"type\": \"CNAME\", \"ttl\": 300, \"changetype\": \"REPLACE\", \"records\": [ {\"content\": \"test.crunchyapple.org.\", \"disabled\": false } ] } ] }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET CRUNCHYAPPLE.ORG",
+			"request": {
+				"url": "http://localhost:8080/api/v1/servers/localhost/zones/crunchyapple.org",
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "changeme",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
