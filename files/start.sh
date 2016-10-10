@@ -13,4 +13,4 @@ fi
 /usr/sbin/pdns_server \
 	--launch=gmysql --gmysql-host=database --gmysql-user=$MYSQL_USER --gmysql-dbname=$MYSQL_DATABASE --gmysql-password=$MYSQL_PASSWORD \
 	--webserver=yes --webserver-address=0.0.0.0 --webserver-port=80 \
-	--experimental-json-interface=yes --experimental-api-key=changeme
+	--api=yes --api-key=changeme

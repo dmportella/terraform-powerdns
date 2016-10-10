@@ -8,7 +8,7 @@ resource "docker_image" "mysql" {
 }
 
 resource "docker_image" "pdns" {
-    name = "lrpdns:latest"
+    name = "pdns4:latest"
 }
 
 resource "docker_container" "database" {
@@ -63,6 +63,7 @@ resource "docker_container" "powerdns" {
         ip = "172.17.0.1"
     }
 }
+
 /*
 # Configure the PowerDNS provider
 provider "powerdns" {
@@ -75,9 +76,9 @@ resource "powerdns_record" "foobar" {
 
     depends_on = ["docker_container.powerdns"]
 
-    zone = "localhost"
-    name = "dmportella.com"
+    zone = "crunchyapple.org"
+    name = "api.crunchyapple.org."
     type = "A"
     ttl = 300
-    records = ["localhost"]
+    records = ["8.8.8.8"]
 }*/
