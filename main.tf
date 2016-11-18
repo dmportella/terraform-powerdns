@@ -4,7 +4,7 @@ provider "docker" {
 }
 
 resource "docker_image" "mysql" {
-    name = "mysql:5.6"
+    name = "mariadb:10.1.19"
 }
 
 resource "docker_image" "pdns" {
