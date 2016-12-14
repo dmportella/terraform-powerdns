@@ -26,9 +26,18 @@ resource "docker_container" "database" {
     env = ["MYSQL_ROOT_PASSWORD=secretrootpassword", "MYSQL_DATABASE=powerdns", "MYSQL_USER=powerdns", "MYSQL_PASSWORD=powerdns"]
 }
 
-resource "docker_container" "powerdns" {
+resource "null_resource" "wait" {
 
     depends_on = ["docker_container.database"]
+
+    provisioner "local-exec" {
+        command = "echo 'Sleeping for 5...' && sleep 5"
+    }
+}
+
+resource "docker_container" "powerdns" {
+
+    depends_on = ["null_resource.wait"]
 
     image = "${docker_image.pdns.latest}"
     name = "powerdns"
